@@ -1,11 +1,11 @@
 const firePixelArray = []
-const larguraFogo = 2 // width
+const larguraFogo = 10 // width
 const alturaFogo = 3 // height
 
 
 function start(){
     criarEstruturaDeDados()
-    console.log(firePixelArray)
+    renderizarFogo()
 }
 
 function criarEstruturaDeDados(){
@@ -21,5 +21,20 @@ function calcularPropagacaoDoFogo(){
 }
 
 function renderizarFogo(){
+    let html = '<table cellpadding=0 cellspacing=0>'
+    
 
+    for(let row = 0; row < alturaFogo; row++){
+        html += '<tr>'
+
+        for(let column = 0; column < larguraFogo; column++){
+            const pixelIndex = column + (larguraFogo * row)
+            html += '<td>'
+            html += pixelIndex
+            html += '</td>'
+        }
+        html += '</tr>'
+    }
+    html += '</table>'
+    document.querySelector('#fireCanvas').innerHTML = html
 }
